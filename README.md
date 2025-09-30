@@ -1,67 +1,84 @@
-## Minimalistic ROG rEFInd theme
+# Minimalistic ROG rEFInd Theme
 
-[rEFInd](http://www.rodsbooks.com/refind/) is an easy to use boot manager for UEFI
-based systems. This is a clean and minimal theme for it.
+[rEFInd](http://www.rodsbooks.com/refind/) is a user-friendly boot manager for UEFI-based systems. This repository provides a clean, minimal theme inspired by ROG aesthetics.
 
 ![ROG rEFInd Minimalistic](./showcase.png)
 
 ---
 
-### Usage
+## Features
 
-1.  Locate your refind EFI directory. This is commonly `/boot/EFI/refind`
-    though it will depend on where you mount your ESP and where rEFInd is
-    installed. `fdisk -l` and `mount` may help.
-
-2.  Create a folder called `themes` inside it, if it doesn't already exist
-
-3.  Clone this repository into the `themes` directory.
-
-4.  To enable the theme add `include themes/rEFInd-minimal/theme.conf` at the end of
-    `refind.conf`.
-
-Here's an example menuentry configuration (from the screenshot)
-
-```nginx
-menuentry "Arch Linux" {
-	icon /EFI/refind/themes/rEFInd-minimal/icons/os_arch.png
-	loader vmlinuz-linux
-	initrd initramfs-linux.img
-	options "rw root=UUID=dfb2919d-ff78-48db-a8a7-23f7542c343a loglevel=3"
-}
-
-menuentry "Windows" {
-	icon /EFI/refind/themes/rEFInd-minimal/icons/os_win.png
-	loader /EFI/Microsoft/Boot/bootmgfw.efi
-}
-
-menuentry "OSX" {
-	icon /EFI/refind/themes/rEFInd-minimal/icons/os_mac.png
-	loader /EFI/Apple/Boot/bootmgfw.efi
-}
-```
-
-Entries that are autodetected should also show the proper icons.
+- Minimal and modern design
+- Custom icons for popular operating systems
+- ROG-inspired background
+- Easy installation and configuration
 
 ---
 
-### Background sizes
+## Installation
 
-If you find the background looks blurry it may be due to the included wallpaper
-being an incorrect resolution for your monitor. You can download the [original
-high quality wallpaper][wallpaper], resize it as appropriate, and replace the
-`background.png`.
+1. **Find your rEFInd EFI directory**
+   Commonly located at `/boot/EFI/refind`. Use `fdisk -l` and `mount` to locate your EFI System Partition (ESP) if needed.
 
-You can of course also choose your own background!
+2. **Create a `themes` folder**
+   Inside your rEFInd directory, create a folder named `themes` if it doesn't exist.
 
-### Icon Requests
+3. **Clone this repository**
+   Clone into the `themes` directory:
 
-The theme is made for my use case, if you like it and want to make add other OS icons then you can raise a feature request and I'll add it. As always pull requests are preferred.
+   ```sh
+   git clone https://github.com/yourusername/rEFInd-minimal-rog.git themes/rEFInd-minimal-rog
+   ```
 
-PS: All the icons have 320x320px image size.
+4. **Enable the theme**
+   Add the following line to the end of your `refind.conf`:
+   ```
+   include themes/rEFInd-minimal-rog/theme.conf
+   ```
 
-### Attribution
+---
 
-The background is [ROG Wallpaper Challenge - 37][wallpaper] from ROG Wallpaper challenge 2017.
+## Example Menu Entries
+
+Below are sample entries for Linux, Windows, and macOS. Icons are specified for each OS.
+
+```nginx
+menuentry "Arch Linux" {
+    icon /EFI/refind/themes/rEFInd-minimal-rog/icons/os_arch.png
+    loader vmlinuz-linux
+    initrd initramfs-linux.img
+    options "rw root=UUID=dfb2919d-ff78-48db-a8a7-23f7542c343a loglevel=3"
+}
+
+menuentry "Windows" {
+    icon /EFI/refind/themes/rEFInd-minimal-rog/icons/os_win.png
+    loader /EFI/Microsoft/Boot/bootmgfw.efi
+}
+
+menuentry "macOS" {
+    icon /EFI/refind/themes/rEFInd-minimal-rog/icons/os_mac.png
+    loader /EFI/Apple/Boot/bootmgfw.efi
+}
+```
+
+Autodetected entries will also display the correct icons.
+
+---
+
+## Customization
+
+### Background
+
+If the included wallpaper appears blurry, it may not match your monitor's resolution. Download the [original high-quality wallpaper][wallpaper], resize it as needed, and replace `background.png`. You can also use any background of your choice.
+
+### Icons
+
+All icons are 320x320px PNGs. If you need additional OS icons, feel free to [open an issue](https://github.com/Paradox-AT/rEFInd-minimal-rog/issues) or submit a pull request.
+
+---
+
+## Attribution
+
+Background: [ROG Wallpaper Challenge - 37][wallpaper] from the ROG Wallpaper Challenge 2017.
 
 [wallpaper]: https://rog.asus.com/wallpapers/yourcreation/
